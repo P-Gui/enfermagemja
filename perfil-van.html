@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Perfil Vanderlanya Rocha</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 20px;
+      color: #333;
+    }
+
+    /* HEADER */
+    .header {
+      background: white;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 25px;
+      z-index: 1000;
+      border: 1.5px solid #355E3B; /* Verde escuro do botão */
+      border-radius: 8px;
+      gap: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      color: #000;
+      justify-content: space-between;
+    }
+
+    /* Container dentro do header para organizar logo, menu e botões */
+    .navbar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 20px;
+      color: #355E3B; /* Verde escuro */
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .logo-icon {
+      font-size: 24px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 8px;
+      transition: color 0.3s ease;
+      border-radius: 6px;
+    }
+
+    .nav-link:hover {
+      color: #355E3B;
+      background-color: #f0f4f2;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #355E3B;
+      color: #355E3B;
+    }
+
+    .btn-outline:hover {
+      background: #355E3B;
+      color: white;
+    }
+
+    .btn-primary {
+      background-color: #355E3B;
+      color: white;
+      border: 2px solid #355E3B;
+    }
+
+    .btn-primary:hover {
+      background-color: #254425;
+      border-color: #254425;
+    }
+
+    /* Para compensar o header fixo, adicionamos padding-top ao body */
+    body {
+      padding-top: 80px;
+    }
+
+    /* Container principal */
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Card Perfil Esquerda */
+    .profile-left {
+      flex: 2;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+    }
+
+    .profile-header {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid #007bff;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      flex-grow: 1;
+    }
+
+    .profile-info h2 {
+      margin: 0 0 5px;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .profile-location {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .tags {
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #007bff;
+      color: white;
+      padding: 3px 9px;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      margin-right: 6px;
+      margin-bottom: 5px;
+    }
+
+    .experience-verified {
+      font-size: 0.85rem;
+      color: #555;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .verified-icon {
+      width: 16px;
+      height: 16px;
+      background: #28a745;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+    }
+
+    .verified-icon::after {
+      content: '✓';
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      position: absolute;
+      top: 1px;
+      left: 4px;
+    }
+
+    .rating {
+      font-weight: 600;
+      color: #ffb700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 15px;
+    }
+
+    .rating .star {
+      font-size: 1.2rem;
+    }
+
+    .btn-message {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #006400;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-weight: 600;
+      cursor: pointer;
+      gap: 8px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 12px;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-message:hover {
+      background: #004d00;
+    }
+
+    .btn-favorite {
+      background: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 20px;
+      color: #777;
+      transition: color 0.3s ease;
+    }
+
+    .btn-favorite:hover {
+      color: #e74c3c;
+      border-color: #e74c3c;
+    }
+
+    /* Tabs */
+    .tabs {
+      margin-top: 25px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      gap: 15px;
+    }
+
+    .tab {
+      padding: 8px 15px;
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 10px 10px 0 0;
+      background: #eee;
+      color: #555;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab.active {
+      background: white;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      color: #007bff;
+    }
+
+    .tab-content {
+      background: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      padding: 15px;
+      border-radius: 0 0 10px 10px;
+      min-height: 150px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Right container agendamento */
+    .profile-right {
+      flex: 1;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    .profile-right h3 {
+      margin-top: 0;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    select,
+    input[type="date"] {
+      width: 100%;
+      padding: 7px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+    }
+
+    /* Calendário custom */
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+
+    .calendar div {
+      text-align: center;
+      padding: 6px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    .calendar div:hover {
+      background-color: #ddd;
+    }
+
+    .calendar .selected {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    /* Horários */
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .time-slot {
+      padding: 7px 12px;
+      border-radius: 5px;
+      background-color: #eee;
+      cursor: pointer;
+      user-select: none;
+      border: 1px solid transparent;
+      transition: background-color 0.3s ease;
+      flex: 1 1 30%;
+      text-align: center;
+    }
+
+    .time-slot.selected {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    /* Consulta e taxa */
+    .price-info {
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .price-info div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .total {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* Botão agendar */
+    .btn-schedule {
+      width: 100%;
+      background-color: #006400;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-schedule:hover {
+      background-color: #004d00;
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 8px;
+      text-align: center;
+    }
+    .services-list {
+  list-style-type: none;
+  padding-left: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.services-list li {
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.review {
+  padding: 15px;
+  background: #f9f9f9;
+  border-left: 4px solid #28a745;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.review-rating {
+  color: #ffb700;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.review-comment {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+}
+.certification-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.95rem;
+}
+
+.certification-list li {
+  background: #f9f9f9;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.cert-source {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.cert-year {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+
+
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-brand">
+        <span class="logo-icon">🩺</span>
+        <span class="logo-text">EnfermeiroJá</span>
+      </div>
+      <div class="nav-menu">
+        <a href="#inicio" class="nav-link">Início</a>
+        <a href="enfermeiros.html" class="nav-link">Buscar Enfermeiros</a>
+        <a href="#enfermeiros" class="nav-link">Para Enfermeiros</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-outline">Entrar</button>
+        <button class="btn btn-primary">Cadastrar</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Esquerda - Perfil -->
+    <div class="profile-left">
+      <div class="profile-header">
+        <div class="profile-photo">
+          <img src="Fotos/van.png" alt="Foto Vanderlanya Rocha" />
+        </div>
+        <div class="profile-info">
+          <h2>Vanderlanya Rocha</h2>
+          <div class="profile-location">Teresina, PI</div>
+          <div class="tags">
+            <span class="tag">Cuidados Domiciliares</span>
+            <span class="tag">Geriatria</span>
+            <span class="tag">Pós-operatório</span>
+          </div>
+          <div class="experience-verified">
+            <span>5+ anos de experiência</span>
+            <span class="verified-icon" title="Verificado"></span>
+          </div>
+          <div class="rating">
+            <span class="star">⭐</span>
+            <span>4.9 (127 avaliações)</span>
+          </div>
+          <a href="#" class="btn-message">💬 Enviar Mensagem</a>
+          <button class="btn-favorite" title="Favoritar">♡</button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab active" data-tab="sobre">Sobre</div>
+        <div class="tab" data-tab="servicos">Serviços</div>
+        <div class="tab" data-tab="avaliacoes">Avaliações</div>
+        <div class="tab" data-tab="certificacoes">Certificações</div>
+      </div>
+
+      <div class="tab-content" id="sobre">
+        <h3>Sobre Vanderlanya</h3>
+        <p>
+          Enfermeira especialista com mais de 5 anos de experiência em cuidados domiciliares.
+          Formada pela UFPI, com especialização em geriatria e cuidados paliativos.
+          Comprometida em oferecer atendimento humanizado e de qualidade.
+        </p>
+      </div>
+      <div class="tab-content" id="servicos" style="display:none;">
+  <h3>Serviços Prestados</h3>
+  <ul class="services-list">
+    <li>
+      <strong>Cuidados Domiciliares:</strong>
+      Monitoramento contínuo, suporte em atividades diárias e acompanhamento geral da saúde do paciente no conforto do lar.
+    </li>
+    <li>
+      <strong>Assistência no Pós-operatório:</strong>
+      Cuidados especializados no período de recuperação, incluindo controle de medicação, curativos e prevenção de complicações.
+    </li>
+    <li>
+      <strong>Atendimento Geriátrico:</strong>
+      Atenção integral à saúde de idosos, com foco em conforto, segurança e bem-estar físico e emocional.
+    </li>
+    <li>
+      <strong>Administração de Medicamentos:</strong>
+      Aplicação segura e responsável de medicamentos orais, intravenosos ou injetáveis, conforme prescrição médica.
+    </li>
+  </ul>
+</div>
+
+      <div class="tab-content" id="avaliacoes" style="display:none;">
+  <h3>Avaliações de Pacientes</h3>
+
+  <div class="review">
+    <div class="review-header">
+      <strong>Maria Clara</strong>
+      <span class="review-date">15/05/2025</span>
+    </div>
+    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+    <p class="review-comment">
+      Atendimento excelente! Muito atenciosa e cuidadosa com minha mãe. Recomendo com certeza.
+    </p>
+  </div>
+
+  <div class="review">
+    <div class="review-header">
+      <strong>João Pedro</strong>
+      <span class="review-date">08/04/2025</span>
+    </div>
+    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+    <p class="review-comment">
+      Pontual, profissional e muito dedicada. Explicou todos os procedimentos com clareza.
+    </p>
+  </div>
+
+  <div class="review">
+    <div class="review-header">
+      <strong>Ana Luiza</strong>
+      <span class="review-date">21/03/2025</span>
+    </div>
+    <div class="review-rating">⭐⭐⭐⭐</div>
+    <p class="review-comment">
+      Ótimo atendimento, apenas um pequeno atraso no horário. Mas a qualidade do serviço foi impecável.
+    </p>
+  </div>
+</div>
+
+      <div class="tab-content" id="certificacoes" style="display:none;">
+  <h3>Certificações Profissionais</h3>
+
+  <ul class="certification-list">
+    <li>
+      <strong>Especialização em Geriatria</strong><br />
+      <span class="cert-source">Universidade Federal do Piauí (UFPI)</span> — <span class="cert-year">2020</span>
+    </li>
+    <li>
+      <strong>Curso de Cuidados Paliativos</strong><br />
+      <span class="cert-source">Hospital Sírio-Libanês</span> — <span class="cert-year">2021</span>
+    </li>
+    <li>
+      <strong>Treinamento em Administração de Medicamentos</strong><br />
+      <span class="cert-source">Conselho Regional de Enfermagem - COREn PI</span> — <span class="cert-year">2019</span>
+    </li>
+  </ul>
+</div>
+
+    </div>
+
+    <!-- Direita - Agendamento -->
+    <div class="profile-right">
+      <h3>Agendar Consulta</h3>
+      <label for="tipoAtendimento">Tipo de Atendimento</label>
+      <select id="tipoAtendimento" name="tipoAtendimento">
+        <option value="" disabled selected>Selecione o tipo</option>
+        <option value="domiciliar">Cuidados Domiciliares</option>
+        <option value="posOperatorio">Pós-operatório</option>
+        <option value="geriatria">Geriatria</option>
+      </select>
+
+      <label>Data</label>
+      <input type="date" id="dataConsulta" name="dataConsulta" min="" />
+
+      <label>Horário</label>
+      <div class="time-slots" id="timeSlots">
+        <div class="time-slot">09:00</div>
+        <div class="time-slot">10:00</div>
+        <div class="time-slot">14:00</div>
+        <div class="time-slot">15:00</div>
+        <div class="time-slot">16:00</div>
+      </div>
+
+      <div class="price-info">
+        <div><span>Consulta</span><span>R$ 80</span></div>
+        <div><span>Taxa da plataforma</span><span>R$ 5</span></div>
+        <div class="total"><span>Total</span><span>R$ 85</span></div>
+      </div>
+
+      <button class="btn-schedule">Agendar Consulta</button>
+      <p class="small-note">Você só será cobrado após a confirmação do enfermeiro</p>
+    </div>
+  </div>
+
+  <script>
+    // Controle abas
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const target = tab.getAttribute('data-tab');
+        tabContents.forEach(tc => {
+          if (tc.id === target) {
+            tc.style.display = 'block';
+          } else {
+            tc.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Seleção de horários
+    const timeSlots = document.querySelectorAll('.time-slot');
+    timeSlots.forEach(slot => {
+      slot.addEventListener('click', () => {
+        timeSlots.forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+      });
+    });
+
+    // Setar data mínima do input date para hoje
+    const dateInput = document.getElementById('dataConsulta');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+  </script>
+<script src="script.js"></script>
+</body>
+</html>

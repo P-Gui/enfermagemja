@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EnfermeiroJá - Conectando Enfermeiros e Pacientes</title>
+  <style>
+    /* CSS completo embutido aqui */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      opacity: 0;
+    }
+
+    body.fade-in {
+      opacity: 1;
+      transition: opacity 0.5s ease-in;
+    }
+
+    .container {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 100px auto 2rem;
+      padding: 0 20px;
+    }
+
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2d5a27;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #2d5a27;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: #2d5a27;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1e3d1a;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #2d5a27;
+      border: 2px solid #2d5a27;
+    }
+
+    .btn-outline:hover {
+      background: #2d5a27;
+      color: white;
+    }
+
+    .sidebar {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  width: 300px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  font-size: 15px;
+  border: 1px solid #e5e7eb;
+}
+
+.sidebar h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #2d5a27;
+  font-weight: 600;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+.filter-group:last-child {
+  border-bottom: none;
+}
+
+.filter-group label {
+  display: block;
+  margin: 6px 0;
+  font-weight: 500;
+  color: #333;
+}
+
+input[type="text"],
+input[type="range"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+  transform: scale(1.2);
+  vertical-align: middle;
+}
+
+.price-range {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.price-range input {
+  flex: 1;
+}
+
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      flex-grow: 1;
+    }
+
+    .nurse-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .nurse-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto;
+      border: 2px solid #ccc;
+    }
+
+    .nurse-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nurse-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .star {
+      color: #fbbf24;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .profile-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .profile-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.body.classList.add('fade-in');
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-brand">
+        <div class="logo">
+          <span class="logo-icon">🩺</span>
+          <span class="logo-text">EnfermeiroJá</span>
+        </div>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="enfermeiros.html" class="nav-link">Buscar Enfermeiros</a>
+        <a href="#enfermeiros" class="nav-link">Para Enfermeiros</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn btn-outline">Entrar</button>
+        <button class="btn btn-primary">Cadastrar</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <aside class="sidebar">
+      <h3>Filtros</h3>
+      <div class="filter-group">
+        <label for="location">Localização</label>
+        <input type="text" id="location" placeholder="Teresina, PI" />
+      </div>
+
+      <div class="filter-group">
+        <label>Especialidades</label>
+        <label><input type="checkbox" /> Cuidados Domiciliares</label>
+        <label><input type="checkbox" /> Idosos</label>
+        <label><input type="checkbox" /> Pós-operatório</label>
+        <label><input type="checkbox" /> Administração de Medicamentos</label>
+        <label><input type="checkbox" /> Curativos</label>
+        <label><input type="checkbox" /> Materno-Infantil</label>
+      </div>
+
+      <div class="filter-group">
+        <label>Disponibilidade</label>
+        <label><input type="checkbox" /> Hoje</label>
+        <label><input type="checkbox" /> Amanhã</label>
+        <label><input type="checkbox" /> Esta semana</label>
+      </div>
+
+      <div class="filter-group">
+        <label>Faixa de Preço: R$ 50 - R$ 200</label>
+        <div class="price-range">
+          <input type="range" min="50" max="200" value="50" />
+          <input type="range" min="50" max="200" value="200" />
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label>Avaliação</label>
+        <label><input type="checkbox" /> 4+ estrelas</label>
+        <label><input type="checkbox" /> 4.5+ estrelas</label>
+        <label><input type="checkbox" /> 4.8+ estrelas</label>
+      </div>
+
+      <div class="filter-group">
+        <label>Tipo de Serviço</label>
+        <label><input type="checkbox" /> Presencial</label>
+        <label><input type="checkbox" /> Online</label>
+      </div>
+    </aside>
+
+    <main class="services-grid">
+      <div class="nurse-card">
+        <div class="nurse-photo">
+          <img src="Fotos/van.png" alt="Foto da Enfermeira Vanderlanya Rocha">
+        </div>
+        <div class="nurse-name">Vanderlanya Rocha</div>
+        <p>Enfermeira Especialista</p>
+        <div class="rating">
+          <span class="star">⭐</span>
+          <span>4.9 (127 avaliações)</span>
+        </div>
+        <button class="profile-button" onclick="window.location.href='perfil-van.html'">Visualizar Perfil</button>
+
+      </div>
+
+      <div class="nurse-card">
+        <div class="nurse-photo">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Santos" />
+        </div>
+        <div class="nurse-name">Ana Santos</div>
+        <p>Cuidados Domiciliares, Idosos, Pós-operatório</p>
+        <div class="rating">
+          <span class="star">⭐</span>
+          <span>4.7 (88 avaliações)</span>
+        </div>
+        <div class="price">R$ 80/consulta</div>
+        <button class="profile-button">Visualizar Perfil</button>
+      </div>
+
+      <div class="nurse-card">
+        <div class="nurse-photo">
+          <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Carlos Oliveira" />
+        </div>
+        <div class="nurse-name">Carlos Oliveira</div>
+        <p>Administração de Medicamentos, Curativos</p>
+        <div class="rating">
+          <span class="star">⭐</span>
+          <span>4.6 (105 avaliações)</span>
+        </div>
+        <div class="price">R$ 75/consulta</div>
+        <button class="profile-button">Visualizar Perfil</button>
+      </div>
+
+      <div class="nurse-card">
+        <div class="nurse-photo">
+          <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Roberto Silva" />
+        </div>
+        <div class="nurse-name">Roberto Silva</div>
+        <p>Cuidados Paliativos, Geriatria</p>
+        <div class="rating">
+          <span class="star">⭐</span>
+          <span>4.8 (91 avaliações)</span>
+        </div>
+        <div class="price">R$ 85/consulta</div>
+        <button class="profile-button">Visualizar Perfil</button>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
